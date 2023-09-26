@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>SVG Türkiye Haritası</title>
+
+    <link href="https://abs.aile.gov.tr/Content/libs/bs3/css/bootstrap.css" rel="stylesheet" />
+    <link href="https://abs.aile.gov.tr/Content/libs/bs3dialog/css/bootstrap-dialog.min.css" rel="stylesheet" />
+    <script src="https://abs.aile.gov.tr/Scripts/jquery-3.7.0.js"></script>
+
+
+
+    <link href="css/svg-harita.css" rel="stylesheet" />
+    <script src="js/svg-harita.js"></script>
+
+</head>
+<body>
+
+    <h3>Kullanım</h3>
+    <p>
+        "svg-harita.css" ve "svg-harita.js" dosyaları kullanılır.
+    </p>
+    <pre>
+        &lt;link href=&quot;css/svg-harita.css&quot; rel=&quot;stylesheet&quot; /&gt;
+        &lt;script src=&quot;js/svg-harita.js&quot;&gt;&lt;/script&gt;
+    </pre>
+    <pre>
+            $(document).ready(function () {
+
+                function donusClick(ilID) {
+                    alert(ilID)
+                }
+
+                var degerler = [{ ilID: 1, deger: 812.3 }, { ilID: 6, deger: 400.23 }, { ilID: 24, deger: 128 }, { ilID: 32, deger: 500 }, { ilID: 54, deger: 828 }, { ilID: 16, deger: 123 }, { ilID: 41, deger: 120 }];
+                svgturkiyeharitasi('haritaDiv', degerler, donusClick, '255 179 0');
+
+            });
+    </pre>
+
+    <h5>Modelden collection olarak gelen veriyi, Js içine atarken aşağıdakine benzer şekilde kullanabilirsiniz. </h5>
+    <pre>
+        var degerler = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.xxxIllerxxx.Select(s=>new { ilID=s.IlID, deger=s.KayitSayisi })));
+    </pre>
+
+    <div class="row">
+        <div class="col-md-2 col-sm-2 col-xs-2"  ></div>
+
+        <div class="col-md-8 col-sm-8 col-xs-12" id="haritaDiv" ></div>
+        <div class="col-md-2 col-sm-2 col-xs-2"  ></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+            function donusClick(ilID) {
+                alert(ilID)
+            }
+
+            //var degerler = [{ ilID: 1, deger: 812.3 }, { ilID: 6, deger: 400.23 }, { ilID: 24, deger: 128 }, { ilID: 32, deger: 500 }, { ilID: 54, deger: 828 }, { ilID: 16, deger: 123 }, { ilID: 41, deger: 120 }];
+            var degerler = [
+                    { ilID: 1, deger: 121 },
+                    { ilID: 2, deger: 18 },
+                    { ilID: 3, deger: 11 },
+                    { ilID: 4, deger: 41 },
+                    { ilID: 5, deger: 11 },
+                    { ilID: 6, deger: 524 },
+                    { ilID: 7, deger: 86 },
+                    { ilID: 8, deger: 8 },
+                    { ilID: 9, deger: 37 },
+                    { ilID: 10, deger: 24 },
+                    { ilID: 11, deger: 3 },
+                    { ilID: 12, deger: 80 },
+                    { ilID: 13, deger: 44 },
+                    { ilID: 14, deger: 11 },
+                    { ilID: 15, deger: 7 },
+                    { ilID: 16, deger: 62 },
+                    { ilID: 17, deger: 14 },
+                    { ilID: 18, deger: 7 },
+                    { ilID: 19, deger: 17 },
+                    { ilID: 20, deger: 23 },
+                    { ilID: 21, deger: 357 },
+                    { ilID: 22, deger: 8 },
+                    { ilID: 23, deger: 80 },
+                    { ilID: 24, deger: 16 },
+                    { ilID: 25, deger: 41 },
+                    { ilID: 26, deger: 22 },
+                    { ilID: 27, deger: 76 },
+                    { ilID: 28, deger: 14 },
+                    { ilID: 29, deger: 3 },
+                    { ilID: 30, deger: 126 },
+                    { ilID: 31, deger: 64 },
+                    { ilID: 32, deger: 6 },
+                    { ilID: 33, deger: 80 },
+                    { ilID: 34, deger: 813 },
+                    { ilID: 35, deger: 149 },
+                    { ilID: 36, deger: 30 },
+                    { ilID: 37, deger: 9 },
+                    { ilID: 38, deger: 39 },
+                    { ilID: 39, deger: 7 },
+                    { ilID: 40, deger: 17 },
+                    { ilID: 41, deger: 51 },
+                    { ilID: 42, deger: 29 },
+                    { ilID: 43, deger: 9 },
+                    { ilID: 44, deger: 41 },
+                    { ilID: 45, deger: 33 },
+                    { ilID: 46, deger: 23 },
+                    { ilID: 47, deger: 223 },
+                    { ilID: 48, deger: 59 },
+                    { ilID: 49, deger: 40 },
+                    { ilID: 50, deger: 10 },
+                    { ilID: 51, deger: 11 },
+                    { ilID: 52, deger: 25 },
+                    { ilID: 53, deger: 8 },
+                    { ilID: 54, deger: 31 },
+                    { ilID: 55, deger: 41 },
+                    { ilID: 56, deger: 52 },
+                    { ilID: 57, deger: 6 },
+                    { ilID: 58, deger: 47 },
+                    { ilID: 59, deger: 12 },
+                    { ilID: 60, deger: 11 },
+                    { ilID: 61, deger: 35 },
+                    { ilID: 62, deger: 110 },
+                    { ilID: 63, deger: 91 },
+                    { ilID: 64, deger: 13 },
+                    { ilID: 65, deger: 83 },
+                    { ilID: 66, deger: 7 },
+                    { ilID: 67, deger: 9 },
+                    { ilID: 68, deger: 9 },
+                    { ilID: 69, deger: 1 },
+                    { ilID: 70, deger: 4 },
+                    { ilID: 71, deger: 12 },
+                    { ilID: 72, deger: 46 },
+                    { ilID: 73, deger: 302 },
+                    { ilID: 74, deger: 2 },
+                    { ilID: 75, deger: 3 },
+                    { ilID: 76, deger: 32 },
+                    { ilID: 77, deger: 5 },
+                    { ilID: 78, deger: 2 },
+                    { ilID: 79, deger: 6 },
+                    { ilID: 80, deger: 16 },
+                    { ilID: 81, deger: 3 }
+            ];
+            svgturkiyeharitasi('haritaDiv', degerler, donusClick, '255 179 0'); //sarı: 255 179 0; //Mavi: 41 128 185      kırmızı:247 70 74
+        });
+    </script>
+</body>
+</html>
