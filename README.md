@@ -19,3 +19,6 @@ Dahsboard ekranları için "Türkiye Isı Haritası" veya "İl Bazlı Sayı İst
     });
 ------------
 	svgturkiyeharitasi('Haritanın konacağı div ID', 'dizi', 'tıklandığında çalışacak fonksiyon. Boş verilebilir.', 'rgb renk kodu'
+
+![](doc/foto1.png)
+![](doc/foto2.png)
