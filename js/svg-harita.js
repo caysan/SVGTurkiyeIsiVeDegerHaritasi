@@ -306,8 +306,6 @@ function svgturkiyeharitasi(haritaDivID, degerler, clickEvent, anaRenk ="255 179
 
     $('#' + haritaDivID).html(haritaHtml);
 
-
-    //var degerler = [{ilID:1,deger:512.3},{ilID:6,deger:400.23},{ilID:24,deger:128},{ilID:32,deger:1500},{ilID:54,deger:828},{ilID:16,deger:123},{ilID:41,deger:122}];
     const element = document.querySelector('#svg-harita');
     const info = document.querySelector('.il-isimleri');
 
@@ -323,14 +321,6 @@ function svgturkiyeharitasi(haritaDivID, degerler, clickEvent, anaRenk ="255 179
             }
         }
     );
-
-    // const mousePosText = document.getElementById('mouse-pos');
-    // let mousePos = { x: undefined, y: undefined };
-
-    // window.addEventListener('mousemove', (event) => {
-    //  mousePos = { x: event.clientX, y: event.clientY };
-    //  mousePosText.textContent = `(${mousePos.x}, ${mousePos.y})`;
-    // });
 
     element.addEventListener(
         'mousemove',
@@ -382,17 +372,8 @@ function svgturkiyeharitasi(haritaDivID, degerler, clickEvent, anaRenk ="255 179
 
 
     //>>>>>>>>>>>>>>>>>>>>>>>>> Haritayı doldurma
-    //0,   1-9, 10-19,.....90-99,   100
-    //ilk değer: 0 değeri
-    //son değer : %100 durumu
-    //aradakiler :%1-99 arasındaki değerler
-    //var colorArray = ["", "#FFF8E1", "#FFECB3", "#FFE082", "#FFD54F", "#FFCA28", "#FFC107", "#FFB300", "#FFA000", "#FF8F00", "#FF6F00", "#ff3100"]
-    //var anaRenk = "255 179 0"; //Mavi: 41 128 185
-    //  var color = "rgb(255 179 0 / 62%)";
-
     var minDeger = 0;
     var maxDeger = 0;
-
 
     //min-max degeri bulalim
     minDeger = degerler[0].deger;
